@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document Editor</title>
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="doceditor">
+    <div id="alert"></div>
+    <div id="context-menu"></div>
+    <navbar id="func-bar">
+        <ul id="menu-bar">
+            <li class="menu-item"><button id="file">File</button></li>
+            <li class="menu-item"><button>Edit</button></li>
+            <li class="menu-item"><button>View</button></li>
+            <li class="menu-item"><button>Insert</button></li>
+            <li class="menu-item"><button>Format</button></li>
+            <li class="menu-item"><button>Tool</button></li>
+        </ul>
+        <ul id="toolbar">
+            <li>
+                <img alt="font" style="margin-left:12px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAB2klEQVQ4ja2Uv2vTQRjGP8+XL0GKhBKClCLSQWy9iGgQcRQRlAqKBiLij0V3NzcRB/8AR5FO4tChgjjUWUQ6iDjkbnSSIiJSREIopY9DL4ilpknbm4573vvc896998qYvRzlIDHFVADHgAngXWiE3nbAYpBou2b7MfACOD2Mw4FA4DhwFqgDN1NMY7sCSroiaTzHnQcO7xgYO7EGtIE12wBTwPXdOLwMdIEPktZtF8Ct2InVkYEpppqkFrAEPAK+S8L2pKT2ThyeAJrAS+A98BlAUgm0Ukz1oYEppgpwwXaXjdpby+B1ANungDOjOKwCbUk/gTsppnvAIWA1u6zbvppi2rcVcKufcs72gbz5fnZWAL+AClBIugY8Ab4MdJhPvQ28lXQyNMJ0aISjoRGmgRvAck573PbdYVJu2p6RtBgaYWWTtgR8yjWJpIsppoP/BebHuCSpArzaHBgaoQs8k0QuoSPAbG4gf4GxE4sUU2l7Cpi1/Q34nWL6535jJ5bAR9srtpG0H2gBk1nbAEqasf0cmAeqkiaAN8CDPjTFVJf01PaCpB7wFVi23QQWJT2MnVgHKG3/kDQPzNnu5pTH8rxfe13gNbBge7W/nmPLHNsD0F537O364cjjD6cvzYPPfsyiAAAAAElFTkSuQmCC">
+                <select>
+                    <option>Sans</option>
+                </select>
+                <select>
+                    <option>12</option>
+                </select>
+                <button><img alt="font-color" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABzklEQVQ4ja2UMWtUQRSFv7MsKRYJIUUqC0kRwsz+hJAqpAjoHxDBRpu0BguxsgiWEmTtLa0iFrKliEWwksywSKotLIJIWJYQJORYOE+eyW52Xbzw4HHvvO+dM/fOyJhZIx2mJUk3bR/FdhwANGaF5ZRXJL0G3gDPcsrzMwNzypvAvu1NYFnSFrAM0PxHUMP2htAesCKpKn0rz/QKc8oN4H6xuVKv2e6EGI6nBuaUW7YfAru2l2oggANJ76rcRMs55RbwSNJjoFWziaQT4HmIYVjlrlWYDlOzKNux3Rqx5D3QrScmKVyUdA+4AX8sVup+ALt1dRMVSmoAc+Wdyq6kM9svgHz5m5EKS0cXSv0DEKqfF2gXeBViOL8WmFNu2t4S2gZWgT7wBFiwvVZgB8BObMfjka5SSi2AEMNpTnnN9r6kxVK/sP0R2JPUt/0T+Brb8XTMLtEE1m3fzSl3bD+twQAaktaBJdu3YzsejQPVgUNgA7gDXBkN20iak3Q2CQa/N7oHfAHmJY1sku0e5axOBIYYvkvqAFc6VmIg6WWI4WJahQBvbT8APgND2+e2T4BPZbC7YwmXQtWNXWbvFrBquyVpYLsX27E/Lewv4P+KX1VZwJRfaQWKAAAAAElFTkSuQmCC"></button>
+            </li>
+            <li>
+                <button class="tool" id="bold"><img alt="bold" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAACJ0lEQVQ4jaWUsWsUQRTGf9+yHKcIhqASNNUhFrMRLAJqQCsFTSGIFoKIhY29gqWkshJEsfcvEAtRUAsVCwsb5XYREYsUwSqEI8ixHPtZ3Kysd+uJ+Kp5M/O++b3HvCdj2qzIiwRIbKdAErcroMyWsqo1CFAtWORFD7houwvskNQBUtsdSWlDcGA7l/QiZGFjUjCd8HdLOgms2E4kjSQ9Bj7a3guckdQDhrb7eT+/lS1l71oJG6kuA2+AnUAJnA5ZeBvP5myvSboOdGx/BU5kS9n3Oj5hwmyXkQDbqe1fd0IWtoAHwKZtJC1KOtWMnxKMdSolASSN+o1TktaBYX1ue/+sGiKpsj2a8eii7U5cl5I+/40QoIoENTEAeT/vApckzUuqgKfA65mEtqtISRS9kPfzHjAv6SxwjHGN7wD3QxYG/0p4SNJx4HD8o6MYd1TSapEXv0FNEbYQP5T0SlJqe872OWBN0iqwDHSLvHgUslC1CkayquEPGmltAveKvDgA3AT2ATeAD8Cn1pRtz/Tj3vOG2wMWamdKsFG72qYGgaTtia1kajEpUJO1PAAQGuTrtv/ceozr2m34neZhkRd7gKvxoRHwTNKXZnB9cZftg0LngYWazPblIi+2Y/AycMX2EUkbwBPgdsjCj1qnOQ9XgLsxlaGkIeNpU9lOY09XtgeSvgEvgfchC8PJ9GrrA9cklUAZ+3lUDwHGgwDGXbL1p6k9NQ//134CCDkEjagF2S4AAAAASUVORK5CYII="></button>
+                <button class="tool" id="italic"><img alt="italic" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABdElEQVQ4jaWUvUoDQRSFvxMWCQpioSIiYmUxG7RQRHwMe30VC/E57CztrQRt7BR1FrFIIUFExEIsNEiORTb4QzKJ5g4Dw8yZb8/l3llM7xFjzBJnlW77MqZbFLGYtr0NTEl6A96BFjACjNk+l3QY8tD8fi/rSvs6y4A12xsAklrAo+0TSUfAx+9LPR1+c7pu+1hSFbizvZXX8pNe+kqS1o45oApg+0HSfUo8CHCls5D0CDwMBbS9KgnbLdu3IQ+vKX2qKMTrmAGhdPcBXPUzkHQoKUiasA3QBM6GAtpeAjJJAM+26/2AyZSBZdsdzUVey5tJdQpYxGJcKPCVxWk/GKRTngVmynXL9uWwwPkSCtDo19BJYLyOFWABmCy3boCnfwMljQC57axsmTrwMgjwR1GKWFRpv91VYLNsF2xPSKoVsaiHPCSd/gDaXpC0S7sYt+WsSFoE9oE94GBgoKSG7R3grXxqnQ9VJY0CjRQMBvgf/jU+AfRnszAJD++XAAAAAElFTkSuQmCC"></button>
+                <button class="tool" id="underline"><img alt="underline" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAB50lEQVQ4ja2UsYoUQRCGv39YlnMxkAtExGCRxaDnEANTAxMDDU84UBBUDH0IH0IMLjqfQMTQ0FBFxGkOvcDAYBHRZTlXWZb5DaZH9+Zm9hT8J+nuqvq6urqmMf/+FUWRddlkTCziVduXJH0HflKpB/SBOfAs5OEdQCziBdubknrAD2ABHAN2Qh72eil4Kqm0vSVpZBtJE9tPJRVLm2B7CnwALtu+DjwBXkmaAVWGaecMuANsp9jnwO2Qh0+0KBbxIrADXAt5+FivZ/Ug5KEEZkuZLGyXbbBk30/+Z5fXs4ZfmZyR1MUCQFINPLMKWDtjO5PUak/aT1meOBKYoKtgALN0Ecf/CgisUbVNq0Ie5vxpmU5gCZS2sd1fBUxdkaWYTuDc9hxA0mAV0PYAGNj+tgr4VdLndMOngJNdQEnngKGk2Am0vWd7N03Xgc1YxB4NxSIOgJtp+mbZdsBZ0hh4BATgNHDLNrGI28CYqgQj23clBdsPgC8HGPWv18jgCnAPOJ/AfWBCVeOJpJe2HwKv8428PBKYoOvAiKqWa6kkU0lj2+/zjXzWFlc/X0Pbw8bxsX1oXM8bKoG3IQ+TuoY3JN2npdHr4BrahKWNFpK2gBc18DHVc5XVTpIOBbc9GGmtBHZ/H/l/6he22QWl0gAt0QAAAABJRU5ErkJggg=="></button>
+            </li>
+            <li>
+                <button class="tool" id="justifyleft"><img alt="align-left" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABa0lEQVQ4jc2UvUrEQBSFvyNhEQuxsLAQK0GYtGIhPoHgA1hbW/gsVuID2IqFWItYiIWFEQsLESuxWmQJi3gsnCzZcbI2W3ibSTL3fnPm/kTGTNNmpkoDiofqYQnYBHp/OdsGqCVdhDLUWSCwafsE6EkaBUoaWwHifm17DXjpAtbAOzDbABpwusbDBsBn55WBK2AHKJLAFNTAh8BbF1BVVa0A23TkMAVn9l8knYUyfDUKN4DD+DymJioaA6d7ku6Bc2DYAPvAKzCbQroUJuCx4hTAre09SUU7uF2gJri1fgFvtgeSPkIZhiOg7XVJR7bncrlKWyjaADgIZThN/QtJ87aXJRU5SJrT+D6UtPDr9HjlG2Dfdq/JT87aKmPrXGb9qqqaB1YjPJ2K7NRkDh0AT6EMdQFs2T6WlK3ypKlp2bPtPeCu4KddFomNPUHFyDJq+5J6xGteS9qlNSldsNysx2994BFA//4HO3XgN/55xUJ3jzbgAAAAAElFTkSuQmCC"></i></button>
+                <button class="tool" id="justifycenter"><img alt="align-center" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABdUlEQVQ4ja2UsU7cQBRFz11ZK6pVikWiooqENM4XRFS0fEGaNPRpUL6Fgg+gYCsqSooodQpmlSIF2iJBKBXFykJoLwUeNB5sROHXjDVjnXfe8xvLmDFjMioNqPo243WcAweSOgltAzSSLkMdmncDgc/Ame2JpARCEkBjew9YvRsoqQH+p/MWlCzXwOOAyKDhD+CQrMeZ5QNwNwSUMfE6TiR9BWblC7Y7hj1xa3tRf6o3L4aSpsAJsJXbtGcdcM/ZStIF0JQl3wAfcsiQYQFeAZtOyQDLuNy1PZU0A+Y5KLdqY8NzH9eS1qEOf18BgdTLb8B321Uyydc2QSPpONRhUWbqfOV2kLdt70iaJLPSUNImtedNYKjD4zIuz4F/FNeysH0ArvqAijHOgI8JXtyKVyUPjNEa+BPq0FTAvu1TSVu5TflcrkXc2D4CflU8z94cmJalDUWP7X07y1TAT0lfEvANixdAbtvu3QO/oRibMWL0H+zowCfcULWJvLDIjAAAAABJRU5ErkJggg=="></button>
+                <button class="tool" id="justifyright"><img alt="align-right" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABdUlEQVQ4ja2UsUoDQRRFzw1BFouQQqzEyirxE/wAGzubNDZi5bdYW/gBdn6CiEUqkRTuYiEiFiIhVRAJIlyL3QnjZFcs9sGyM7uzZ+57787KmDaj0yoN6NY9LPIiA/aBLH5uG0kr621/SRoPhoP3WiCwafsSyCRhl2UJ4xhazb+AEXDVBPwGZpLWAyhEqrCaL2wvGlMGppIOgLVYSRPU9rekpyUwf8g7ko6AXkoOKdbVLtpgDrwugZLWgHOqJtSpCeD0XTWfSnoGbuOUX4B+mlJdZ9NGAW+2PwEUjF3kxTZlzdYpu9yJ1f0Vkha2J8Pd4VzpSSny4hA4s53FNmnyYBUfwMlgOLiu63Lf9pakTlBWpzBJuVddq7axfQOcElkmfBirTJq1AO4AukVe9ICdJbzc+D6FNKVejT+BWVC4Z/tCUpYs+jVO70m82D4GJl1K722EFP/RgDq188rLdIGxpFFcsyZYemoi6Bx4hMiHbUXrP9jWgT84HreIOTmbNgAAAABJRU5ErkJggg=="></button>
+            </li>
+        </ul>
+    </navbar>
+    
+</div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+</html>
